@@ -2,6 +2,7 @@ package dynago
 
 import (
 	"encoding/json"
+	"log"
 
 	"gopkg.in/underarmour/dynago.v1/internal/aws"
 	"gopkg.in/underarmour/dynago.v1/schema"
@@ -73,6 +74,7 @@ type AwsExecutor struct {
 func (e *AwsExecutor) makeRequest(target string, document interface{}) ([]byte, error) {
 	buf, err := json.Marshal(document)
 	if err != nil {
+		log.Printf("Dynago: error marshalling request: %+v | target: %+v | document: %+v", err, target, document)
 		return nil, err
 	}
 	return e.Requester.MakeRequest(target, buf)
@@ -91,6 +93,9 @@ func (e *AwsExecutor) MakeRequestUnmarshal(method string, document interface{}, 
 		return
 	}
 	err = json.Unmarshal(body, dest)
+	if err != nil {
+		log.Printf("Dynago: error unmarshalling response: %+v | body: %+v | dest: %+v", err, body, dest)
+	}
 	return
 }
 
