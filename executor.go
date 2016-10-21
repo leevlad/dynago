@@ -90,6 +90,7 @@ prototyping new functionality.
 func (e *AwsExecutor) MakeRequestUnmarshal(method string, document interface{}, dest interface{}) (err error) {
 	body, err := e.makeRequest(method, document)
 	if err != nil {
+		log.Printf("Dynago: error making request: %+v | method: %+v | document: %+v", err, method, document)
 		return
 	}
 	err = json.Unmarshal(body, dest)

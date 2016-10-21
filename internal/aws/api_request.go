@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"errors"
 	"io"
+	"log"
 	"net/http"
 	"net/url"
 	"strings"
@@ -47,6 +48,7 @@ type RequestMaker struct {
 func (r *RequestMaker) MakeRequest(target string, body []byte) ([]byte, error) {
 	req, err := http.NewRequest("POST", r.Endpoint, bytes.NewBuffer(body))
 	if err != nil {
+		log.Printf("Dynago: error creating new http request: %+v | endpoint: %+v | body: %+v", err, r.Endpoint, body)
 		return nil, err
 	}
 	if !strings.Contains(target, ".") {
@@ -61,6 +63,7 @@ func (r *RequestMaker) MakeRequest(target string, body []byte) ([]byte, error) {
 	}
 	response, err := r.Caller.Do(req)
 	if err != nil {
+		log.Printf("Dynago: error executing http request: %+v | request: %+v | body: %+v", err, req)
 		return nil, err
 	}
 	respBody, err := responseBytes(response)
@@ -69,6 +72,7 @@ func (r *RequestMaker) MakeRequest(target string, body []byte) ([]byte, error) {
 	}
 	if response.StatusCode != http.StatusOK {
 		err = r.BuildError(req, body, response, respBody)
+		log.Printf("Dynago: error bad response code: %+v", err)
 	}
 	return respBody, err
 }
