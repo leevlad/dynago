@@ -3,9 +3,9 @@ package streams_test
 import (
 	"testing"
 
-	"gopkg.in/underarmour/dynago.v1"
-	"gopkg.in/underarmour/dynago.v1/schema"
-	"gopkg.in/underarmour/dynago.v1/streams"
+	"github.com/leevlad/dynago"
+	"github.com/leevlad/dynago/schema"
+	"github.com/leevlad/dynago/streams"
 
 	"github.com/stretchr/testify/assert"
 )

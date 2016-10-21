@@ -1,10 +1,11 @@
 package dynago
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
 
-	"gopkg.in/underarmour/dynago.v1/internal/aws"
+	"github.com/stretchr/testify/assert"
+
+	"github.com/leevlad/dynago/internal/aws"
 )
 
 func setUp(t *testing.T) (*assert.Assertions, *Client, *MockExecutor) {

@@ -3,8 +3,8 @@ package dynago_test
 import (
 	"testing"
 
+	"github.com/leevlad/dynago"
 	"github.com/stretchr/testify/assert"
-	"gopkg.in/underarmour/dynago.v1"
 )
 
 var consumedOk = 0

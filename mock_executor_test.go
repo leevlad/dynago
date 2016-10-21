@@ -3,8 +3,8 @@ package dynago_test
 import (
 	"testing"
 
+	"github.com/leevlad/dynago"
 	"github.com/stretchr/testify/assert"
-	"gopkg.in/underarmour/dynago.v1"
 )
 
 func mockSetup(t *testing.T) (*assert.Assertions, *dynago.Client, *dynago.MockExecutor) {

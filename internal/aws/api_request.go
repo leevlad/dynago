@@ -56,6 +56,7 @@ func (r *RequestMaker) MakeRequest(target string, body []byte) ([]byte, error) {
 	}
 	req.Header.Add("x-amz-target", target)
 	req.Header.Add("content-type", "application/x-amz-json-1.0")
+	req.Header.Add("accept", "application/x-amz-json-1.0")
 	req.Header.Set("Host", req.URL.Host)
 	r.Signer.SignRequest(req, body)
 	if r.DebugRequests {
@@ -72,7 +73,7 @@ func (r *RequestMaker) MakeRequest(target string, body []byte) ([]byte, error) {
 	}
 	if response.StatusCode != http.StatusOK {
 		err = r.BuildError(req, body, response, respBody)
-		log.Printf("Dynago: error bad response code: %+v", err)
+		log.Printf("Dynago: error bad response code: %+v | req: %+v | body: %+v | response: %+v | respBody: %+v", err, req, body, response, respBody)
 	}
 	return respBody, err
 }

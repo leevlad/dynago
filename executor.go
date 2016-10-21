@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"log"
 
-	"gopkg.in/underarmour/dynago.v1/internal/aws"
-	"gopkg.in/underarmour/dynago.v1/schema"
+	"github.com/leevlad/dynago/internal/aws"
+	"github.com/leevlad/dynago/schema"
 )
 
 /*
