@@ -7,7 +7,7 @@ go:
 env:
     global:
         - DYNAGO_TEST_ENDPOINT="http://localhost:8001/"
-        - DYNAGO_SUBPATH="src/github.com/leevlad/dynago"
+        - DYNAGO_SUBPATH="src/github.com/500px/dynago"
 
 before_install:
     - "pwd"
